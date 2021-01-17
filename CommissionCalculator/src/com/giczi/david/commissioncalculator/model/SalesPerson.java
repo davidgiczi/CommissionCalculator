@@ -5,13 +5,13 @@ import java.util.List;
 public class SalesPerson extends AbstractSalesPerson {
 
 	private String nameOfSalesPerson;
-	private Double summaCommision;
-	
+	private Double summaCommission;
+
 	public SalesPerson(List<String> personData) {
 		super(personData);
-		
+
 	}
-	
+
 	public String getNameOfSalesPerson() {
 		return nameOfSalesPerson;
 	}
@@ -20,17 +20,15 @@ public class SalesPerson extends AbstractSalesPerson {
 		this.nameOfSalesPerson = nameOfSalesPerson;
 	}
 
-	public Double getSummaCommision() {
-		return summaCommision;
+	public Double getSummaCommission() {
+		return summaCommission;
 	}
 
 	@Override
 	public void calcSummaCommission() {
-		
-		summaCommision = super.calcCommissionBySoldProducts() +
-						 super.calcBonusCommissionForProductA() +
-						 super.calcBonusCommissionForProductB() +
-						 super.calcBonusCommissionForProductC();
+
+		summaCommission = super.calcCommissionBySoldProducts() + super.calcBonusCommissionForProductA()
+				+ super.calcBonusCommissionForProductB() + super.calcBonusCommissionForProductC();
 	}
-	
+
 }

@@ -37,13 +37,14 @@ public class SalesPersonCommissionXMLFileCreator {
 			Document doc = new Document(salesPersons);
 
 			for (SalesPerson salesPerson : salesPersonStore) {
-				
+
 				Element personData = new Element("salesperson");
 				personData.addContent(new Element("name").setText(salesPerson.getNameOfSalesPerson()));
-				personData.addContent(new Element("commission").setText(String.valueOf(salesPerson.getSummaCommision())));
+				personData.addContent(
+						new Element("commission").setText(String.valueOf(salesPerson.getSummaCommission())));
 				doc.getRootElement().addContent(personData);
 			}
-			
+
 			XMLOutputter xmlOutput = new XMLOutputter();
 			xmlOutput.setFormat(Format.getPrettyFormat());
 
