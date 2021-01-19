@@ -81,7 +81,7 @@ public abstract class AbstractSalesPerson implements BonusCommissionCalcService 
 	@Override
 	public int calcBonusCommissionForProductA() {
 
-		double summaIncomeForProductA = 0;
+		int summaIncomeForProductA = 0;
 
 		for (Integer incomeItemA : incomeItemsForAProduct) {
 			summaIncomeForProductA += incomeItemA;
@@ -99,7 +99,7 @@ public abstract class AbstractSalesPerson implements BonusCommissionCalcService 
 	@Override
 	public int calcBonusCommissionForProductB() {
 
-		double summaIncomeForProductB = 0;
+		int summaIncomeForProductB = 0;
 
 		for (Integer incomeItemB : incomeItemsForBProduct) {
 			summaIncomeForProductB += incomeItemB;
@@ -117,7 +117,7 @@ public abstract class AbstractSalesPerson implements BonusCommissionCalcService 
 	@Override
 	public int calcBonusCommissionForProductC() {
 
-		double summaIncomeForProductC = 0;
+		int summaIncomeForProductC = 0;
 
 		for (Integer incomeItemC : incomeItemsForCProduct) {
 			summaIncomeForProductC += incomeItemC;
