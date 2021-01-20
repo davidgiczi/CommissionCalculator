@@ -18,8 +18,8 @@ public class AbstractSalesPersonTest {
 		List<String> salesPersonData = DataLoader.getSalesPersonData("Ü1", dataStore);
 		AbstractSalesPerson salesPerson = new SalesPerson(salesPersonData);
 		assertTrue(!salesPerson.getProductListByType("A").isEmpty());
-		// for (Integer incomeItemA : salesPerson.getIncomeItemsForAProduct()) {
-		// System.out.println(incomeItemA);}
+		// for (Integer incomeItemA : salesPerson.getProductListByType("A")) {
+		//System.out.println(incomeItemA);}
 	}
 
 	@Test
@@ -29,8 +29,8 @@ public class AbstractSalesPersonTest {
 		List<String> salesPersonData = DataLoader.getSalesPersonData("Ü1", dataStore);
 		AbstractSalesPerson salesPerson = new SalesPerson(salesPersonData);
 		assertTrue(!salesPerson.getProductListByType("B").isEmpty());
-		// for (Integer incomeItemB : salesPerson.getIncomeItemsForBProduct()) {
-		 //System.out.println(incomeItemB);}
+		// for (Integer incomeItemB : salesPerson.getProductListByType("B")) {
+		// System.out.println(incomeItemB);}
 	}
 
 	@Test
@@ -40,8 +40,8 @@ public class AbstractSalesPersonTest {
 		List<String> salesPersonData = DataLoader.getSalesPersonData("Ü1", dataStore);
 		AbstractSalesPerson salesPerson = new SalesPerson(salesPersonData);
 		assertTrue(!salesPerson.getProductListByType("C").isEmpty());
-		// for (Integer incomeItemC : salesPerson.getIncomeItemsForBProduct()) {
-		 //System.out.println(incomeItemC);}
+		// for (Integer incomeItemC : salesPerson.getProductListByType("C")) {
+		// System.out.println(incomeItemC);}
 	}
 
 	@Test
