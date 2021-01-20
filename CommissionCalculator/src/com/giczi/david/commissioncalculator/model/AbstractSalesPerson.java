@@ -1,63 +1,62 @@
 package com.giczi.david.commissioncalculator.model;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public abstract class AbstractSalesPerson implements BonusCommissionCalcService {
 
-	private double commissionPercent = 1.0;
-	protected List<Integer> incomeItemsForAProduct;
-	protected List<Integer> incomeItemsForBProduct;
-	protected List<Integer> incomeItemsForCProduct;
+	private String nameOfSalesPerson;
+	private HashMap<String, List<Integer>> incomeItems;
 
 	public AbstractSalesPerson(List<String> personData) {
-		incomeItemsForAProduct = new ArrayList<>();
-		incomeItemsForBProduct = new ArrayList<>();
-		incomeItemsForCProduct = new ArrayList<>();
-		setIncomeItemsListsForProducts(personData);
+
+		incomeItems = new HashMap<>();
+		setIncomeItemsForProducts(personData);
+		nameOfSalesPerson = getSalesPersonName(personData);
 	}
 
 	public abstract void calcSummaCommission();
 
-	private void setIncomeItemsListsForProducts(List<String> salesPersonData) {
+	private void setIncomeItemsForProducts(List<String> salesPersonData) {
 
-		for (String data : salesPersonData) {
-
-			String[] dataStore = data.split("\\|");
-
-			switch (dataStore[0]) {
-			case "A":
-				incomeItemsForAProduct.add(Integer.parseInt(dataStore[2]));
-				break;
-			case "B":
-				incomeItemsForBProduct.add(Integer.parseInt(dataStore[2]));
-				break;
-			case "C":
-				incomeItemsForCProduct.add(Integer.parseInt(dataStore[2]));
-
-			}
+		for (String productType : ProductType.PRODUCT_STORE) {
+			List<Integer> productList = getProductListByProductType(productType, salesPersonData);
+			incomeItems.put(productType, productList);
 		}
 
 	}
 
-	public List<Integer> getIncomeItemsForAProduct() {
-		return incomeItemsForAProduct;
+	private List<Integer> getProductListByProductType(String productType, List<String> salesPersonData) {
+
+		List<Integer> productList = new ArrayList<>();
+
+		for (String personData : salesPersonData) {
+
+			String[] data = personData.split("\\|");
+
+			if (productType.equals(data[0])) {
+				productList.add(Integer.parseInt(data[2]));
+			}
+		}
+
+		return productList;
 	}
 
-	public List<Integer> getIncomeItemsForBProduct() {
-		return incomeItemsForBProduct;
+	private String getSalesPersonName(List<String> personData) {
+		return personData.get(0).split("\\|")[1];
 	}
 
-	public List<Integer> getIncomeItemsForCProduct() {
-		return incomeItemsForCProduct;
+	public List<Integer> getProductListByType(String productType) {
+		return incomeItems.get(productType);
 	}
 
-	public double getCommissionPercent() {
-		return commissionPercent;
+	public String getNameOfSalesPerson() {
+		return nameOfSalesPerson;
 	}
 
-	public void setCommissionPercent(double commissionPercent) {
-		this.commissionPercent = commissionPercent;
+	public void setNameOfSalesPerson(String nameOfSalesPerson) {
+		this.nameOfSalesPerson = nameOfSalesPerson;
 	}
 
 	@Override
@@ -65,17 +64,17 @@ public abstract class AbstractSalesPerson implements BonusCommissionCalcService 
 
 		double summaIncome = 0.0;
 
-		for (Integer incomeItemA : incomeItemsForAProduct) {
-			summaIncome += incomeItemA;
-		}
-		for (Integer incomeItemB : incomeItemsForBProduct) {
-			summaIncome += incomeItemB;
-		}
-		for (Integer incomeItemC : incomeItemsForCProduct) {
-			summaIncome += incomeItemC;
+		for (String productType : ProductType.PRODUCT_STORE) {
+
+			List<Integer> productItems = incomeItems.get(productType);
+
+			for (Integer productItem : productItems) {
+				summaIncome += productItem;
+			}
+
 		}
 
-		return summaIncome * commissionPercent / 100;
+		return summaIncome * COMMISSION_PERCENT / 100;
 	}
 
 	@Override
@@ -83,7 +82,7 @@ public abstract class AbstractSalesPerson implements BonusCommissionCalcService 
 
 		int summaIncomeForProductA = 0;
 
-		for (Integer incomeItemA : incomeItemsForAProduct) {
+		for (Integer incomeItemA : incomeItems.get(ProductType.PRODUCT_STORE[0])) {
 			summaIncomeForProductA += incomeItemA;
 		}
 
@@ -101,7 +100,7 @@ public abstract class AbstractSalesPerson implements BonusCommissionCalcService 
 
 		int summaIncomeForProductB = 0;
 
-		for (Integer incomeItemB : incomeItemsForBProduct) {
+		for (Integer incomeItemB : incomeItems.get(ProductType.PRODUCT_STORE[1])) {
 			summaIncomeForProductB += incomeItemB;
 		}
 
@@ -119,7 +118,7 @@ public abstract class AbstractSalesPerson implements BonusCommissionCalcService 
 
 		int summaIncomeForProductC = 0;
 
-		for (Integer incomeItemC : incomeItemsForCProduct) {
+		for (Integer incomeItemC : incomeItems.get(ProductType.PRODUCT_STORE[2])) {
 			summaIncomeForProductC += incomeItemC;
 		}
 

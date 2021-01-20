@@ -3,7 +3,6 @@ package com.giczi.david.commissioncalculator.io;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
-
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.jdom2.output.Format;

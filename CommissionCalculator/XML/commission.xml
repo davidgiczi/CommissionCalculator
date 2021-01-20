@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <salespersons>
   <salesperson>
-    <name>Ãœ1</name>
+    <name>Ü1</name>
     <commission>375000.0</commission>
   </salesperson>
   <salesperson>
-    <name>Ãœ2</name>
+    <name>Ü2</name>
     <commission>381000.0</commission>
   </salesperson>
   <salesperson>
-    <name>Ãœ3</name>
+    <name>Ü3</name>
     <commission>378000.0</commission>
   </salesperson>
 </salespersons>
