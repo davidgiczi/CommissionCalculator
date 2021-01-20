@@ -1,10 +1,10 @@
 package com.giczi.david.commissioncalculator.test;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import java.util.ArrayList;
 import java.util.List;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import com.giczi.david.commissioncalculator.io.DataLoader;
 import com.giczi.david.commissioncalculator.model.AbstractSalesPerson;
 import com.giczi.david.commissioncalculator.model.SalesPerson;
@@ -12,51 +12,51 @@ import com.giczi.david.commissioncalculator.model.SalesPerson;
 public class AbstractSalesPersonTest {
 
 	@Test
-	void testCreateListOfIncomeItemsOfProductA() {
+	public void testCreateListOfIncomeItemsOfProductA() {
 
 		List<String> dataStore = DataLoader.loadDataFromFile("./task/Feladat_fejlesztőknek_1_jutalékadatok.txt");
 		List<String> salesPersonData = DataLoader.getSalesPersonData("Ü1", dataStore);
 		AbstractSalesPerson salesPerson = new SalesPerson(salesPersonData);
-		assertTrue(!salesPerson.getIncomeItemsForAProduct().isEmpty());
+		assertTrue(!salesPerson.getProductListByType("A").isEmpty());
 		// for (Integer incomeItemA : salesPerson.getIncomeItemsForAProduct()) {
 		// System.out.println(incomeItemA);}
 	}
 
 	@Test
-	void testCreateListOfIncomeItemsOfProductB() {
+	public void testCreateListOfIncomeItemsOfProductB() {
 
 		List<String> dataStore = DataLoader.loadDataFromFile("./task/Feladat_fejlesztőknek_1_jutalékadatok.txt");
 		List<String> salesPersonData = DataLoader.getSalesPersonData("Ü1", dataStore);
 		AbstractSalesPerson salesPerson = new SalesPerson(salesPersonData);
-		assertTrue(!salesPerson.getIncomeItemsForBProduct().isEmpty());
+		assertTrue(!salesPerson.getProductListByType("B").isEmpty());
 		// for (Integer incomeItemB : salesPerson.getIncomeItemsForBProduct()) {
-		// System.out.println(incomeItemB);}
+		 //System.out.println(incomeItemB);}
 	}
 
 	@Test
-	void testCreateListOfIncomeItemsOfProductC() {
+	public void testCreateListOfIncomeItemsOfProductC() {
 
 		List<String> dataStore = DataLoader.loadDataFromFile("./task/Feladat_fejlesztőknek_1_jutalékadatok.txt");
 		List<String> salesPersonData = DataLoader.getSalesPersonData("Ü1", dataStore);
 		AbstractSalesPerson salesPerson = new SalesPerson(salesPersonData);
-		assertTrue(!salesPerson.getIncomeItemsForCProduct().isEmpty());
+		assertTrue(!salesPerson.getProductListByType("C").isEmpty());
 		// for (Integer incomeItemC : salesPerson.getIncomeItemsForBProduct()) {
-		// System.out.println(incomeItemC);}
+		 //System.out.println(incomeItemC);}
 	}
 
 	@Test
-	void testCalcCommissionBySoldProducts() {
+	public void testCalcCommissionBySoldProducts() {
 
 		List<String> soldProducts = new ArrayList<>();
 		soldProducts.add("A|Ü1|20");
 		soldProducts.add("B|Ü1|30");
 		soldProducts.add("C|Ü1|50");
 		AbstractSalesPerson salesPerson = new SalesPerson(soldProducts);
-		assertEquals(1.0, salesPerson.calcCommissionBySoldProducts());
+		assertTrue(1.0 == salesPerson.calcCommissionBySoldProducts());
 	}
 
 	@Test
-	void test1CalcBonusCommissionForProductA() {
+	public void test1CalcBonusCommissionForProductA() {
 
 		List<String> soldProductA = new ArrayList<>();
 		soldProductA.add("A|Ü1|2000000");
@@ -67,7 +67,7 @@ public class AbstractSalesPersonTest {
 	}
 
 	@Test
-	void test2CalcBonusCommissionForProductA() {
+	public void test2CalcBonusCommissionForProductA() {
 
 		List<String> soldProductA = new ArrayList<>();
 		soldProductA.add("A|Ü1|2000000");
@@ -78,7 +78,7 @@ public class AbstractSalesPersonTest {
 	}
 
 	@Test
-	void test3CalcBonusCommissionForProductA() {
+	public void test3CalcBonusCommissionForProductA() {
 
 		List<String> soldProductA = new ArrayList<>();
 		soldProductA.add("A|Ü1|1000000");
@@ -89,7 +89,7 @@ public class AbstractSalesPersonTest {
 	}
 
 	@Test
-	void test1CalcBonusCommissionForProductB() {
+	public void test1CalcBonusCommissionForProductB() {
 
 		List<String> soldProductB = new ArrayList<>();
 		soldProductB.add("B|Ü1|1000000");
@@ -100,7 +100,7 @@ public class AbstractSalesPersonTest {
 	}
 
 	@Test
-	void test2CalcBonusCommissionForProductB() {
+	public void test2CalcBonusCommissionForProductB() {
 
 		List<String> soldProductB = new ArrayList<>();
 		soldProductB.add("B|Ü1|1000000");
@@ -111,7 +111,7 @@ public class AbstractSalesPersonTest {
 	}
 
 	@Test
-	void test3CalcBonusCommissionForProductB() {
+	public void test3CalcBonusCommissionForProductB() {
 
 		List<String> soldProductB = new ArrayList<>();
 		soldProductB.add("B|Ü1|7000000");
@@ -122,7 +122,7 @@ public class AbstractSalesPersonTest {
 	}
 
 	@Test
-	void test1CalcBonusCommissionForProductC() {
+	public void test1CalcBonusCommissionForProductC() {
 
 		List<String> soldProductC = new ArrayList<>();
 		soldProductC.add("C|Ü1|1000000");
@@ -133,7 +133,7 @@ public class AbstractSalesPersonTest {
 	}
 
 	@Test
-	void test2CalcBonusCommissionForProductC() {
+	public void test2CalcBonusCommissionForProductC() {
 
 		List<String> soldProductC = new ArrayList<>();
 		soldProductC.add("C|Ü1|3000000");
@@ -144,7 +144,7 @@ public class AbstractSalesPersonTest {
 	}
 
 	@Test
-	void test3CalcBonusCommissionForProductC() {
+	public void test3CalcBonusCommissionForProductC() {
 
 		List<String> soldProductC = new ArrayList<>();
 		soldProductC.add("C|Ü1|6000000");

@@ -2,7 +2,6 @@ package com.giczi.david.commissioncalculator.app;
 
 import java.util.Arrays;
 import java.util.List;
-
 import com.giczi.david.commissioncalculator.io.DataLoader;
 import com.giczi.david.commissioncalculator.io.SalesPersonCommissionXMLFileCreator;
 import com.giczi.david.commissioncalculator.model.SalesPerson;
@@ -17,15 +16,12 @@ public class ComissionCalculatorApp {
 		List<String> ü3SalesPersonData = DataLoader.getSalesPersonData("Ü3", dataStore);
 
 		SalesPerson ü1SalesPerson = new SalesPerson(ü1SalesPersonData);
-		ü1SalesPerson.setNameOfSalesPerson("Ü1");
 		ü1SalesPerson.calcSummaCommission();
 
 		SalesPerson ü2SalesPerson = new SalesPerson(ü2SalesPersonData);
-		ü2SalesPerson.setNameOfSalesPerson("Ü2");
 		ü2SalesPerson.calcSummaCommission();
 
 		SalesPerson ü3SalesPerson = new SalesPerson(ü3SalesPersonData);
-		ü3SalesPerson.setNameOfSalesPerson("Ü3");
 		ü3SalesPerson.calcSummaCommission();
 
 		SalesPersonCommissionXMLFileCreator fileXMLCreator = new SalesPersonCommissionXMLFileCreator(

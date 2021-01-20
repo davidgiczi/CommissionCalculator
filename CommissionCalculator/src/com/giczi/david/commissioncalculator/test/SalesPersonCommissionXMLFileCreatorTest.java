@@ -1,18 +1,19 @@
 package com.giczi.david.commissioncalculator.test;
 
 import static org.junit.Assert.assertTrue;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import com.giczi.david.commissioncalculator.io.SalesPersonCommissionXMLFileCreator;
 import com.giczi.david.commissioncalculator.model.SalesPerson;
 
 public class SalesPersonCommissionXMLFileCreatorTest {
 
 	@Test
-	void testCreateXMLFile() {
+	public void testCreateXMLFile() {
 
 		List<String> soldProducts = new ArrayList<>();
 		soldProducts.add("A|Ü1|12000000");

@@ -1,17 +1,14 @@
 package com.giczi.david.commissioncalculator.test;
 
 import static org.junit.Assert.assertTrue;
-
 import java.util.List;
-
-import org.junit.jupiter.api.Test;
-
+import org.junit.Test;
 import com.giczi.david.commissioncalculator.io.DataLoader;
 
 public class DataLoaderTest {
 
 	@Test
-	void testLoadDataFromFile1() {
+	public void testLoadDataFromFile1() {
 
 		List<String> dataStore = DataLoader.loadDataFromFile("./task/Feladat_fejlesztőknek_1_jutalékadatok.txt");
 		assertTrue(!dataStore.isEmpty());
@@ -20,14 +17,14 @@ public class DataLoaderTest {
 	}
 
 	@Test
-	void testLoadDataFromFile2() {
+	public void testLoadDataFromFile2() {
 
 		DataLoader.loadDataFromFile("./task/Feladat_fejlesztőknek_1_jutalékadatok");
 		assertTrue(true);
 	}
 
 	@Test
-	void testGetÜ1SalesPersonData() {
+	public void testGetÜ1SalesPersonData() {
 
 		List<String> dataStore = DataLoader.loadDataFromFile("./task/Feladat_fejlesztőknek_1_jutalékadatok.txt");
 		List<String> ü1SalesPersonData = DataLoader.getSalesPersonData("Ü1", dataStore);
@@ -37,7 +34,7 @@ public class DataLoaderTest {
 	}
 
 	@Test
-	void testGetÜ2SalesPersonData() {
+	public void testGetÜ2SalesPersonData() {
 
 		List<String> dataStore = DataLoader.loadDataFromFile("./task/Feladat_fejlesztőknek_1_jutalékadatok.txt");
 		List<String> ü2SalesPersonData = DataLoader.getSalesPersonData("Ü2", dataStore);
@@ -47,7 +44,7 @@ public class DataLoaderTest {
 	}
 
 	@Test
-	void testGetÜ3SalesPersonData() {
+	public void testGetÜ3SalesPersonData() {
 
 		List<String> dataStore = DataLoader.loadDataFromFile("./task/Feladat_fejlesztőknek_1_jutalékadatok.txt");
 		List<String> ü3SalesPersonData = DataLoader.getSalesPersonData("Ü3", dataStore);
@@ -57,7 +54,7 @@ public class DataLoaderTest {
 	}
 
 	@Test
-	void testGetNotExistSalesPersonData() {
+	public void testGetNotExistSalesPersonData() {
 
 		List<String> dataStore = DataLoader.loadDataFromFile("./task/Feladat_fejlesztőknek_1_jutalékadatok.txt");
 		List<String> notExistSalesPersonData = DataLoader.getSalesPersonData("Ü4", dataStore);
